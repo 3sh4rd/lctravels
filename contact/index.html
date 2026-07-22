@@ -62,6 +62,19 @@
   .nav-links a.active{color:var(--rose-gold-bright)}
   .nav-links a.active::after{width:100%}
 
+  /* HAMBURGER */
+  .hamburger{
+    display:none;background:none;border:none;cursor:pointer;padding:8px;
+    color:var(--rose-gold-bright);z-index:110;
+  }
+  .hamburger span{
+    display:block;width:26px;height:2px;background:currentColor;
+    margin:6px 0;transition:transform .3s ease,opacity .3s ease;border-radius:2px;
+  }
+  .nav.open .hamburger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .nav.open .hamburger span:nth-child(2){opacity:0}
+  .nav.open .hamburger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
   /* HERO */
   .contact-hero{
     min-height:55vh;
@@ -309,6 +322,25 @@
   .success-msg.show{display:block;animation:fadeIn .5s}
   @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
 
+  /* WHATSAPP FLOAT */
+  .wa-btn{
+    position:fixed;bottom:24px;left:24px;z-index:200;
+    width:56px;height:56px;border-radius:50%;
+    background:#25d366;
+    border:1.5px solid rgba(255,255,255,.4);text-decoration:none;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;cursor:pointer;
+    box-shadow:0 10px 30px rgba(37,211,102,.45),inset 0 1px 0 rgba(255,255,255,.3);
+    transition:transform .3s ease,box-shadow .3s ease;
+    animation:waPulse 3s ease-in-out infinite;
+  }
+  .wa-btn:hover{transform:scale(1.1);box-shadow:0 15px 40px rgba(37,211,102,.6)}
+  .wa-btn svg{width:28px;height:28px;fill:#fff}
+  @keyframes waPulse{
+    0%,100%{box-shadow:0 10px 30px rgba(37,211,102,.45),inset 0 1px 0 rgba(255,255,255,.3)}
+    50%{box-shadow:0 10px 40px rgba(37,211,102,.75),0 0 0 8px rgba(37,211,102,.15),inset 0 1px 0 rgba(255,255,255,.3)}
+  }
+
   /* FOOTER */
   footer{
     background:var(--emerald-deep);color:var(--cream);padding:50px 6% 30px;
@@ -331,7 +363,24 @@
     .info-card{position:static}
   }
   @media(max-width:768px){
-    .nav-links{display:none}
+    .hamburger{display:block}
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;
+      background:rgba(11,61,46,.98);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      padding:14px 0;
+      border-bottom:1px solid rgba(224,168,153,.2);
+      transform:translateY(-16px);
+      opacity:0;pointer-events:none;
+      transition:transform .3s ease,opacity .3s ease;
+    }
+    .nav-links li{border-bottom:1px solid rgba(224,168,153,.08)}
+    .nav-links li:last-child{border-bottom:none}
+    .nav-links a{display:block;padding:16px 5%;text-align:center;font-size:1rem}
+    .nav-links a::after{display:none}
+    .nav.open .nav-links{transform:translateY(0);opacity:1;pointer-events:auto}
     .nav{padding:14px 5%}
     .contact-section{padding:60px 5%}
     .info-card, .form-card{padding:32px 22px}
@@ -343,10 +392,14 @@
 
 <nav class="nav">
   <a href="/" class="logo">LC TRAVELS<span>JOURNEYS BEYOND</span></a>
+  <button class="hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav(this)">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/#specialties">Specialties</a></li>
     <li><a href="/#about">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
     <li><a href="/contact/" class="active">Contact</a></li>
   </ul>
 </nav>
@@ -627,6 +680,11 @@
   </div>
 </section>
 
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/8294031?text=Hi!%20I'm%20interested%20in%20planning%20a%20trip." target="_blank" rel="noopener" class="wa-btn" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0c-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+</a>
+
 <footer>
   <a href="/" class="logo">LC TRAVELS<span>JOURNEYS BEYOND</span></a>
   <p>Your independent travel agent for luxury, family, adventure, and Caribbean getaways.</p>
@@ -645,6 +703,17 @@
 </footer>
 
 <script>
+function toggleNav(btn){
+  const nav = btn.closest('.nav');
+  const open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('.nav')?.classList.remove('open');
+  });
+});
+
 // visual toggle for checks + pills
 document.querySelectorAll('.check-item input[type=checkbox]').forEach(cb=>{
   cb.addEventListener('change',()=>cb.closest('.check-item').classList.toggle('selected',cb.checked));
@@ -664,53 +733,76 @@ document.getElementById('agree').addEventListener('change',e=>{
 function v(id){return document.getElementById(id).value.trim()}
 function radio(name){const el=document.querySelector(`input[name=${name}]:checked`);return el?el.value:''}
 
-function sendQuote(e){
+async function sendQuote(e){
   e.preventDefault();
+  const btn = document.querySelector('.btn-submit');
+  const msg = document.getElementById('successMsg');
+
   const quoteBoxes=[...document.querySelectorAll('input[name=quote]:checked')].map(c=>c.value);
   const other=v('quoteOther'); if(other) quoteBoxes.push('Other: '+other);
-  if(quoteBoxes.length===0){alert('Please check at least one item under "What would you like us to Quote?"');return false}
+  if(quoteBoxes.length===0){
+    alert('Please check at least one item under "What would you like us to Quote?"');
+    return false;
+  }
 
-  const NL='%0D%0A';
-  const line=(k,val)=> `${k}: ${encodeURIComponent(val||'-')}` + NL;
+  const data = new FormData();
+  data.append('_subject', `New Quote Request from ${v('name')}`);
+  data.append('_template', 'table');
+  data.append('_captcha', 'false');
+  data.append('Full Name', v('name'));
+  data.append('Email', v('email'));
+  data.append('Phone', v('phone'));
+  data.append('Quote For', quoteBoxes.join(', '));
+  data.append('Total Travelers', v('travelers'));
+  data.append('Adults', v('adults'));
+  data.append('Children', v('children'));
+  data.append('Ages of Children', v('ages') || 'N/A');
+  data.append('Rooms Needed', v('rooms'));
+  data.append('Accommodation Type', v('roomType'));
+  data.append('Reason for Travel', v('reason'));
+  data.append('Destinations', v('destination'));
+  data.append('Departure Info', v('departure'));
+  data.append('Departure Date', v('depDate'));
+  data.append('Return Date', v('retDate'));
+  data.append('Flexible on Dates', radio('flex'));
+  data.append('Flex Range', v('flexRange') || 'N/A');
+  data.append('Budget Per Person (USD)', v('budget'));
+  data.append('Car Rental', radio('car'));
+  data.append('Travel Insurance', radio('insurance'));
+  data.append('Airport Transfers', radio('transfers'));
+  data.append('Agreed to Service Fee', document.getElementById('agree').checked ? 'Yes' : 'No');
+  data.append('Special Requests', v('extras') || 'N/A');
+  data.append('Referral', v('referral') || 'N/A');
 
-  const body =
-    `New Vacation Quote Request from ${encodeURIComponent(v('name'))}${NL}${NL}` +
-    `=== YOUR INFO ===${NL}` +
-    line('Full Name',v('name')) +
-    line('Email',v('email')) +
-    line('Phone',v('phone')) + NL +
-    `=== QUOTE FOR ===${NL}` +
-    line('Requested',quoteBoxes.join(', ')) + NL +
-    `=== TRAVEL PARTY ===${NL}` +
-    line('Total Travelers',v('travelers')) +
-    line('Adults',v('adults')) +
-    line('Children',v('children')) +
-    line('Ages of Children',v('ages')) + NL +
-    `=== ACCOMMODATIONS ===${NL}` +
-    line('Rooms/Bedrooms',v('rooms')) +
-    line('Type',v('roomType')) +
-    line('Reason for Travel',v('reason')) + NL +
-    `=== DESTINATION & DATES ===${NL}` +
-    line('Destination(s)',v('destination')) +
-    line('Departure Info',v('departure')) +
-    line('Departure Date',v('depDate')) +
-    line('Return Date',v('retDate')) +
-    line('Flexible?',radio('flex')) +
-    line('Flex Range',v('flexRange')) + NL +
-    `=== BUDGET & EXTRAS ===${NL}` +
-    line('Budget per person (USD)',v('budget')) +
-    line('Car Rental',radio('car')) +
-    line('Travel Insurance',radio('insurance')) +
-    line('Airport Transfers',radio('transfers')) + NL +
-    `=== AGREEMENT ===${NL}` +
-    line('Agreed to Prof. Services Fee',document.getElementById('agree').checked?'Yes':'No') + NL +
-    `=== NOTES ===${NL}` +
-    line('Special Requests',v('extras')) +
-    line('Referral',v('referral'));
+  btn.disabled = true;
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
 
-  const subject = `New Quote Request from ${v('name')}`;
-  window.location.href = `mailto:leshardclarke.travels@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-  document.getElementById('successMsg').classList.add('show');
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/leshardclarke.travels@gmail.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    });
+
+    if (response.ok) {
+      msg.textContent = "Thank you! Your quote request has been sent. We'll get back to you within 48-72 hours.";
+      msg.classList.add('show');
+      document.getElementById('quoteForm').reset();
+      document.querySelectorAll('.check-item.selected, .pill.selected, .agreement-check.selected').forEach(el => el.classList.remove('selected'));
+      btn.textContent = 'Send Another Request';
+      btn.disabled = false;
+      window.scrollTo({ top: msg.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (err) {
+    msg.textContent = 'Something went wrong sending your request. Please try again, or email leshardclarke.travels@gmail.com directly.';
+    msg.classList.add('show');
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }
+
   return false;
 }
 </script>
