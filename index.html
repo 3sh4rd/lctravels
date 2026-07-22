@@ -333,6 +333,39 @@
   }
   .cta p{max-width:600px;margin:0 auto 34px;font-weight:300;opacity:.95}
 
+  /* ENROLL BAR */
+  .enroll{
+    padding:70px 6%;
+    background:linear-gradient(135deg,var(--emerald) 0%,var(--emerald-deep) 100%);
+    border-top:1px solid rgba(224,168,153,.15);
+    border-bottom:1px solid rgba(224,168,153,.15);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .enroll::before{
+    content:"";position:absolute;top:50%;left:50%;
+    width:600px;height:600px;transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(224,168,153,.12),transparent 60%);
+    border-radius:50%;pointer-events:none;
+  }
+  .enroll-content{position:relative;z-index:2;max-width:720px;margin:0 auto}
+  .enroll .kicker{
+    display:inline-block;font-size:.75rem;letter-spacing:5px;text-transform:uppercase;
+    color:var(--rose-gold-bright);margin-bottom:12px;font-weight:500;
+  }
+  .enroll h3{
+    font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);
+    color:var(--cream);margin-bottom:12px;line-height:1.2;
+  }
+  .enroll h3 em{
+    font-style:italic;
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--gold-shine));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .enroll p{
+    color:rgba(253,247,242,.85);font-weight:300;
+    margin-bottom:26px;max-width:520px;margin-left:auto;margin-right:auto;
+  }
+
   /* FOOTER */
   footer{
     background:var(--emerald-deep);color:var(--cream);padding:60px 6% 30px;
@@ -421,7 +454,7 @@
   <svg class="icon-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
   <svg class="icon-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
 </button>
-<audio id="oceanAudio" src="/waves.mp3" loop preload="metadata"></audio>
+<audio id="oceanAudio" src="waves.mp3" loop preload="auto"></audio>
 
 <!-- SPECIALTIES -->
 <section class="specialties" id="specialties">
@@ -493,6 +526,16 @@
   </div>
 </section>
 
+<!-- ENROLL -->
+<section class="enroll">
+  <div class="enroll-content">
+    <span class="kicker">Join Our Team</span>
+    <h3>Want to enroll to <em>become an agent?</em></h3>
+    <p>Turn your love of travel into a career. Join our team and start building your own client base with full support from day one.</p>
+    <a href="https://www.cs4000.net/ET/enroll/country.asp?pkg=1&sponsorid=926874" target="_blank" rel="noopener" class="btn btn-primary">Enroll Now</a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -534,11 +577,25 @@
   const btn = document.getElementById('soundToggle');
   if(!audio || !btn) return;
   audio.volume = 0.35;
+
+  audio.addEventListener('error', () => {
+    btn.title = 'Audio file could not be loaded (waves.mp3 missing)';
+    btn.style.opacity = '.6';
+    console.warn('LC Travels: waves.mp3 could not load. Make sure it is in the same folder as index.html.');
+  });
+
   btn.addEventListener('click', () => {
     if (audio.paused) {
-      audio.play().then(() => btn.classList.add('playing')).catch(() => {
-        // audio file not found or blocked
-      });
+      const p = audio.play();
+      if (p && p.then) {
+        p.then(() => btn.classList.add('playing'))
+         .catch((err) => {
+           console.warn('LC Travels: audio playback failed', err);
+           btn.title = 'Audio playback blocked or file missing';
+         });
+      } else {
+        btn.classList.add('playing');
+      }
     } else {
       audio.pause();
       btn.classList.remove('playing');
