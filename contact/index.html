@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Help Us Plan Your Vacation — LC Travels</title>
-<meta name="description" content="Request a custom travel quote from LC Travels — flights, hotels, cruises, all-inclusives, and more." />
+<title>Help Us Plan Your Vacation | LC Travels</title>
+<meta name="description" content="Request a custom travel quote from LC Travels: flights, hotels, cruises, all-inclusives, and more." />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta property="og:title" content="Help Us Plan Your Vacation — LC Travels" />
+<meta property="og:title" content="Help Us Plan Your Vacation | LC Travels" />
 <meta property="og:description" content="Share a few details and get a personalized travel quote within 48–72 hours." />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#0b3d2e" />
@@ -367,7 +367,7 @@
     <!-- INFO -->
     <div class="info-card">
       <h2>Reach me <em>directly</em></h2>
-      <p>Prefer to talk first? Use any of the ways below — I typically respond within a few hours.</p>
+      <p>Prefer to talk first? Use any of the ways below. I typically respond within a few hours.</p>
 
       <div class="info-item">
         <div class="info-icon">
@@ -385,7 +385,7 @@
         </div>
         <div class="info-text">
           <h4>WhatsApp</h4>
-          <a href="https://wa.me/8294031" target="_blank">Message me — 8294031</a>
+          <a href="https://wa.me/8294031" target="_blank">Message me: 8294031</a>
         </div>
       </div>
 
@@ -593,7 +593,7 @@
           </div>
           <div class="agreement">
             <p>LC Travels charges a non-refundable professional services fee (based on booking fee) to all clients. This fee includes our usual services of finding and recommending the best properties for you, along with helping navigate the ever-changing rules of travel, including the latest updates from tour operators, airlines, resorts, and entry requirements per destination.</p>
-            <p>Once you submit this form and agree to the terms, an email will be sent with the service fee amount and you'll be asked whether you want to continue. While anyone can book for themselves online, our professional services fee ensures you won't be alone with your vacation — if any issues arise, we handle them every step of the way.</p>
+            <p>Once you submit this form and agree to the terms, an email will be sent with the service fee amount and you'll be asked whether you want to continue. While anyone can book for themselves online, our professional services fee ensures you won't be alone with your vacation. If any issues arise, we handle them every step of the way.</p>
             <p>Any questions or concerns, reach me at leshardclarke.travels@gmail.com, or LC Travels on Facebook &amp; Instagram.</p>
             <label class="agreement-check">
               <input type="checkbox" id="agree" required />
@@ -610,7 +610,7 @@
           </div>
           <div class="form-group">
             <label for="extras">Special requests &amp; preferences</label>
-            <textarea id="extras" placeholder="Desired resorts, airline or cruise preferences, activities, must-haves — the more detail, the better."></textarea>
+            <textarea id="extras" placeholder="Desired resorts, airline or cruise preferences, activities, must-haves. The more detail, the better."></textarea>
           </div>
           <div class="form-group">
             <label for="referral">Who may we thank for the referral?</label>
@@ -620,7 +620,7 @@
 
         <button type="submit" class="btn-submit">Send My Quote Request</button>
         <div class="success-msg" id="successMsg">
-          Opening your email client — we'll get back to you within 48–72 hours!
+          Opening your email client. We'll get back to you within 48-72 hours!
         </div>
       </form>
     </div>
@@ -641,7 +641,7 @@
       <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0c-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
     </a>
   </div>
-  <div class="copyright">© 2026 LC TRAVELS — Crafted with care for wanderers everywhere.</div>
+  <div class="copyright">© 2026 LC TRAVELS. Crafted with care for wanderers everywhere.</div>
 </footer>
 
 <script>
@@ -671,44 +671,44 @@ function sendQuote(e){
   if(quoteBoxes.length===0){alert('Please check at least one item under "What would you like us to Quote?"');return false}
 
   const NL='%0D%0A';
-  const line=(k,val)=> `${k}: ${encodeURIComponent(val||'—')}` + NL;
+  const line=(k,val)=> `${k}: ${encodeURIComponent(val||'-')}` + NL;
 
   const body =
     `New Vacation Quote Request from ${encodeURIComponent(v('name'))}${NL}${NL}` +
-    `— YOUR INFO —${NL}` +
+    `=== YOUR INFO ===${NL}` +
     line('Full Name',v('name')) +
     line('Email',v('email')) +
     line('Phone',v('phone')) + NL +
-    `— QUOTE FOR —${NL}` +
+    `=== QUOTE FOR ===${NL}` +
     line('Requested',quoteBoxes.join(', ')) + NL +
-    `— TRAVEL PARTY —${NL}` +
+    `=== TRAVEL PARTY ===${NL}` +
     line('Total Travelers',v('travelers')) +
     line('Adults',v('adults')) +
     line('Children',v('children')) +
     line('Ages of Children',v('ages')) + NL +
-    `— ACCOMMODATIONS —${NL}` +
+    `=== ACCOMMODATIONS ===${NL}` +
     line('Rooms/Bedrooms',v('rooms')) +
     line('Type',v('roomType')) +
     line('Reason for Travel',v('reason')) + NL +
-    `— DESTINATION & DATES —${NL}` +
+    `=== DESTINATION & DATES ===${NL}` +
     line('Destination(s)',v('destination')) +
     line('Departure Info',v('departure')) +
     line('Departure Date',v('depDate')) +
     line('Return Date',v('retDate')) +
     line('Flexible?',radio('flex')) +
     line('Flex Range',v('flexRange')) + NL +
-    `— BUDGET & EXTRAS —${NL}` +
+    `=== BUDGET & EXTRAS ===${NL}` +
     line('Budget per person (USD)',v('budget')) +
     line('Car Rental',radio('car')) +
     line('Travel Insurance',radio('insurance')) +
     line('Airport Transfers',radio('transfers')) + NL +
-    `— AGREEMENT —${NL}` +
+    `=== AGREEMENT ===${NL}` +
     line('Agreed to Prof. Services Fee',document.getElementById('agree').checked?'Yes':'No') + NL +
-    `— NOTES —${NL}` +
+    `=== NOTES ===${NL}` +
     line('Special Requests',v('extras')) +
     line('Referral',v('referral'));
 
-  const subject = `New Quote Request — ${v('name')}`;
+  const subject = `New Quote Request from ${v('name')}`;
   window.location.href = `mailto:leshardclarke.travels@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   document.getElementById('successMsg').classList.add('show');
   return false;
