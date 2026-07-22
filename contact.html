@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Help Us Plan Your Vacation — LC Travels</title>
+<meta name="description" content="Request a custom travel quote from LC Travels — flights, hotels, cruises, all-inclusives, and more." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:title" content="Help Us Plan Your Vacation — LC Travels" />
+<meta property="og:description" content="Share a few details and get a personalized travel quote within 48–72 hours." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0b3d2e" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald-deep:#0b3d2e;
+    --emerald:#0f5c46;
+    --emerald-light:#1a7a5e;
+    --rose-gold:#e0a899;
+    --rose-gold-bright:#f4c2b3;
+    --rose-gold-deep:#b76e5a;
+    --gold-shine:#f7d9c4;
+    --cream:#fdf7f2;
+    --ink:#0a2419;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--cream);
+    background:var(--emerald-deep);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:800;letter-spacing:-.5px}
+
+  /* NAV */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:18px 6%;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(11,61,46,.85);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(224,168,153,.2);
+  }
+  .logo{
+    font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:800;
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--gold-shine),var(--rose-gold));
+    -webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px;
+    text-decoration:none;
+  }
+  .logo span{font-size:.7rem;display:block;letter-spacing:6px;color:var(--rose-gold);font-family:'Poppins',sans-serif;font-weight:300;margin-top:-4px}
+  .nav-links{display:flex;gap:36px;list-style:none}
+  .nav-links a{color:var(--cream);text-decoration:none;font-weight:400;font-size:.95rem;position:relative;transition:color .3s}
+  .nav-links a::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--rose-gold),var(--gold-shine));transition:width .3s ease}
+  .nav-links a:hover{color:var(--rose-gold-bright)}
+  .nav-links a:hover::after{width:100%}
+  .nav-links a.active{color:var(--rose-gold-bright)}
+  .nav-links a.active::after{width:100%}
+
+  /* HERO */
+  .contact-hero{
+    min-height:55vh;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    background:
+      linear-gradient(135deg,rgba(11,61,46,.85) 0%,rgba(183,110,90,.75) 100%),
+      url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80') center/cover;
+    color:var(--white);padding:160px 6% 80px;position:relative;overflow:hidden;
+  }
+  .contact-hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 20% 30%,rgba(224,168,153,.2),transparent 50%);
+  }
+  .contact-hero .kicker{
+    display:inline-block;padding:8px 20px;border:1px solid var(--rose-gold);
+    border-radius:100px;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;
+    color:var(--rose-gold-bright);margin-bottom:20px;background:rgba(224,168,153,.08);
+    position:relative;z-index:2;
+  }
+  .contact-hero h1{
+    font-size:clamp(2.2rem,4.5vw,3.8rem);margin-bottom:16px;position:relative;z-index:2;
+    text-shadow:0 4px 30px rgba(0,0,0,.4);line-height:1.15;
+  }
+  .contact-hero h1 em{
+    font-style:italic;
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--gold-shine));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .contact-hero p{max-width:640px;margin:0 auto;font-weight:300;position:relative;z-index:2;opacity:.95}
+
+  /* MAIN */
+  .contact-section{
+    padding:100px 6%;
+    background:linear-gradient(180deg,var(--emerald-deep) 0%,var(--emerald) 100%);
+    position:relative;overflow:hidden;
+  }
+  .contact-section::before{
+    content:"";position:absolute;top:10%;left:-100px;width:400px;height:400px;
+    background:radial-gradient(circle,rgba(224,168,153,.1),transparent 70%);
+    border-radius:50%;pointer-events:none;
+  }
+  .contact-section::after{
+    content:"";position:absolute;bottom:10%;right:-100px;width:400px;height:400px;
+    background:radial-gradient(circle,rgba(247,217,196,.08),transparent 70%);
+    border-radius:50%;pointer-events:none;
+  }
+  .contact-grid{position:relative;z-index:2}
+  .contact-grid{
+    max-width:1300px;margin:0 auto;
+    display:grid;grid-template-columns:0.85fr 1.25fr;gap:50px;align-items:start;
+  }
+
+  /* INFO CARD */
+  .info-card{
+    background:linear-gradient(135deg,var(--emerald-deep),var(--emerald));
+    color:var(--cream);padding:44px 36px;border-radius:24px;
+    position:sticky;top:110px;overflow:hidden;
+    box-shadow:0 30px 60px rgba(11,61,46,.25);
+  }
+  .info-card::before{
+    content:"";position:absolute;top:-80px;right:-80px;width:300px;height:300px;
+    background:radial-gradient(circle,rgba(224,168,153,.2),transparent 70%);
+    border-radius:50%;
+  }
+  .info-card h2{font-size:1.8rem;margin-bottom:12px;position:relative;z-index:2}
+  .info-card h2 em{
+    font-style:italic;
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--gold-shine));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .info-card > p{font-weight:300;opacity:.9;margin-bottom:26px;position:relative;z-index:2;font-size:.92rem}
+  .info-item{
+    display:flex;align-items:flex-start;gap:14px;padding:14px 0;
+    border-bottom:1px solid rgba(224,168,153,.15);position:relative;z-index:2;
+  }
+  .info-item:last-of-type{border-bottom:none}
+  .info-icon{
+    flex-shrink:0;width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--rose-gold));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(224,168,153,.4);
+  }
+  .info-icon svg{width:18px;height:18px;fill:var(--emerald-deep)}
+  .info-text h4{
+    font-family:'Poppins',sans-serif;font-weight:500;font-size:.7rem;
+    letter-spacing:3px;text-transform:uppercase;color:var(--rose-gold-bright);
+    margin-bottom:4px;
+  }
+  .info-text a, .info-text p{
+    color:var(--cream);text-decoration:none;font-weight:300;font-size:.92rem;transition:color .3s;
+  }
+  .info-text a:hover{color:var(--rose-gold-bright)}
+  .info-socials{display:flex;gap:12px;margin-top:24px;position:relative;z-index:2}
+  .info-socials a{
+    display:inline-flex;width:42px;height:42px;border-radius:50%;
+    background:rgba(255,255,255,.08);border:1px solid rgba(224,168,153,.25);
+    align-items:center;justify-content:center;text-decoration:none;
+    transition:transform .3s ease,background .3s ease;
+  }
+  .info-socials a:hover{
+    transform:translateY(-4px);
+    background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-deep));
+  }
+  .info-socials svg{width:16px;height:16px;fill:var(--cream)}
+
+  /* FORM */
+  .form-card{
+    background:linear-gradient(160deg,#0e4d3a 0%,#0b3d2e 100%);
+    padding:50px 45px;border-radius:24px;
+    box-shadow:0 30px 60px rgba(0,0,0,.35);
+    border:1px solid rgba(224,168,153,.2);
+    color:var(--cream);
+  }
+  .form-card h2{color:var(--cream);font-size:1.9rem;margin-bottom:8px}
+  .form-card h2 em{
+    font-style:italic;
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--gold-shine));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .form-card > .lede{color:rgba(253,247,242,.85);font-weight:300;margin-bottom:8px;font-size:.95rem}
+  .required-note{color:var(--rose-gold-bright);font-size:.78rem;letter-spacing:1px;margin-bottom:28px;font-weight:400}
+
+  .form-section{
+    margin-bottom:36px;padding-bottom:32px;
+    border-bottom:1px dashed rgba(224,168,153,.25);
+  }
+  .form-section:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .section-title{
+    display:flex;align-items:center;gap:12px;margin-bottom:20px;
+  }
+  .section-num{
+    display:inline-flex;width:32px;height:32px;border-radius:50%;
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--rose-gold));
+    color:var(--emerald-deep);font-family:'Playfair Display',serif;font-weight:800;
+    align-items:center;justify-content:center;font-size:.9rem;
+    box-shadow:0 6px 16px rgba(224,168,153,.35);
+  }
+  .section-title h3{
+    font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--rose-gold-bright);
+  }
+
+  .form-group{margin-bottom:20px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+
+  label{
+    display:block;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;
+    font-weight:500;color:var(--rose-gold-bright);margin-bottom:8px;
+  }
+  label .req{color:var(--rose-gold);margin-left:4px}
+  .help{display:block;font-size:.78rem;color:rgba(253,247,242,.6);font-weight:300;margin-top:4px;text-transform:none;letter-spacing:0}
+
+  input[type=text],input[type=email],input[type=tel],input[type=number],input[type=date],select,textarea{
+    width:100%;padding:13px 16px;font-family:'Poppins',sans-serif;font-size:.95rem;
+    border:1.5px solid rgba(224,168,153,.25);border-radius:12px;
+    background:rgba(0,0,0,.15);
+    color:var(--cream);transition:border-color .3s,box-shadow .3s,background .3s;
+    font-weight:300;
+  }
+  input::placeholder, textarea::placeholder{color:rgba(253,247,242,.4)}
+  input:focus, select:focus, textarea:focus{
+    outline:none;border-color:var(--rose-gold-bright);
+    box-shadow:0 0 0 4px rgba(224,168,153,.2);background:rgba(0,0,0,.25);
+  }
+  input[type=date]{color-scheme:dark}
+  textarea{resize:vertical;min-height:110px}
+
+  /* CHECKBOX GRID */
+  .check-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;
+  }
+  .check-item{
+    display:flex;align-items:center;gap:10px;padding:12px 14px;
+    border:1.5px solid rgba(224,168,153,.25);border-radius:12px;
+    background:rgba(0,0,0,.15);
+    cursor:pointer;transition:all .25s;font-size:.9rem;font-weight:400;
+    color:var(--cream);
+  }
+  .check-item:hover{border-color:var(--rose-gold-bright);background:rgba(0,0,0,.25)}
+  .check-item input{accent-color:var(--rose-gold);width:16px;height:16px;flex-shrink:0}
+  .check-item.selected{
+    background:linear-gradient(135deg,rgba(224,168,153,.25),rgba(247,217,196,.15));
+    border-color:var(--rose-gold-bright);color:#fff;font-weight:500;
+    box-shadow:0 4px 12px rgba(224,168,153,.2);
+  }
+
+  /* RADIO PILL GROUP */
+  .radio-pills{display:flex;gap:10px;flex-wrap:wrap}
+  .pill{
+    padding:10px 22px;border:1.5px solid rgba(224,168,153,.25);border-radius:100px;
+    cursor:pointer;font-size:.88rem;background:rgba(0,0,0,.15);
+    transition:all .25s;font-weight:400;color:var(--cream);
+  }
+  .pill:hover{border-color:var(--rose-gold-bright);color:#fff}
+  .pill input{display:none}
+  .pill.selected{
+    background:linear-gradient(135deg,var(--rose-gold-bright),var(--rose-gold));
+    border-color:var(--rose-gold-bright);color:var(--emerald-deep);font-weight:600;
+    box-shadow:0 6px 16px rgba(224,168,153,.35);
+  }
+
+  /* AGREEMENT */
+  .agreement{
+    background:rgba(0,0,0,.2);
+    border:1px solid rgba(224,168,153,.2);border-radius:16px;padding:24px;
+    margin-bottom:20px;
+  }
+  .agreement p{font-size:.85rem;color:rgba(253,247,242,.85);font-weight:300;margin-bottom:14px;line-height:1.65}
+  .agreement-check{
+    display:flex;align-items:flex-start;gap:12px;padding:14px 16px;
+    background:rgba(0,0,0,.2);border:1.5px solid rgba(224,168,153,.25);border-radius:12px;
+    cursor:pointer;transition:all .25s;
+  }
+  .agreement-check:hover{border-color:var(--rose-gold-bright)}
+  .agreement-check.selected{
+    background:linear-gradient(135deg,rgba(224,168,153,.2),rgba(247,217,196,.15));
+    border-color:var(--rose-gold-bright);
+  }
+  .agreement-check input{margin-top:3px;accent-color:var(--rose-gold);width:16px;height:16px;flex-shrink:0}
+  .agreement-check span{font-size:.9rem;font-weight:500;color:var(--cream)}
+
+  .btn-submit{
+    width:100%;padding:18px;font-family:'Poppins',sans-serif;font-weight:500;font-size:1rem;
+    letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;
+    border-radius:100px;color:var(--emerald-deep);
+    background:linear-gradient(135deg,var(--rose-gold-bright) 0%,var(--gold-shine) 50%,var(--rose-gold) 100%);
+    box-shadow:0 10px 30px rgba(224,168,153,.4),inset 0 1px 0 rgba(255,255,255,.5);
+    position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease;
+    margin-top:14px;
+  }
+  .btn-submit::before{
+    content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
+    transition:left .7s ease;
+  }
+  .btn-submit:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(224,168,153,.55),inset 0 1px 0 rgba(255,255,255,.6)}
+  .btn-submit:hover::before{left:100%}
+
+  .success-msg{
+    display:none;padding:18px;border-radius:12px;
+    background:linear-gradient(135deg,rgba(224,168,153,.2),rgba(247,217,196,.15));
+    border:1px solid var(--rose-gold-bright);color:var(--rose-gold-bright);
+    margin-top:20px;text-align:center;font-weight:400;
+  }
+  .success-msg.show{display:block;animation:fadeIn .5s}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+  /* FOOTER */
+  footer{
+    background:var(--emerald-deep);color:var(--cream);padding:50px 6% 30px;
+    border-top:1px solid rgba(224,168,153,.15);text-align:center;
+  }
+  footer .logo{display:inline-block;margin-bottom:14px}
+  footer p{opacity:.85;font-weight:300;font-size:.9rem;margin-bottom:14px}
+  .footer-socials{display:flex;justify-content:center;gap:12px;margin-bottom:26px}
+  .footer-socials a{
+    display:inline-flex;width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-deep));
+    align-items:center;justify-content:center;transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .footer-socials a:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(224,168,153,.4)}
+  .footer-socials svg{width:18px;height:18px;fill:var(--white)}
+  .copyright{padding-top:24px;border-top:1px solid rgba(224,168,153,.15);font-size:.8rem;opacity:.7;letter-spacing:1px}
+
+  @media(max-width:1000px){
+    .contact-grid{grid-template-columns:1fr;gap:40px}
+    .info-card{position:static}
+  }
+  @media(max-width:768px){
+    .nav-links{display:none}
+    .nav{padding:14px 5%}
+    .contact-section{padding:60px 5%}
+    .info-card, .form-card{padding:32px 22px}
+    .form-row, .form-row-3{grid-template-columns:1fr;gap:0}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="logo">LC TRAVELS<span>JOURNEYS BEYOND</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#specialties">Specialties</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div>
+    <span class="kicker">Help Us Plan Your Vacation</span>
+    <h1>No request is too big <em>or too small</em></h1>
+    <p>We're here to make sure your travel experience is as memorable as possible. Fill in a few details and we'll contact you within 48–72 hours with a personalized quote.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <!-- INFO -->
+    <div class="info-card">
+      <h2>Reach me <em>directly</em></h2>
+      <p>Prefer to talk first? Use any of the ways below — I typically respond within a few hours.</p>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="info-text">
+          <h4>Email</h4>
+          <a href="mailto:leshardclarke.travels@gmail.com">leshardclarke.travels@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0c-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        </div>
+        <div class="info-text">
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/8294031" target="_blank">Message me — 8294031</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.4-3.6-8-8-8zm0 11c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z"/></svg>
+        </div>
+        <div class="info-text">
+          <h4>Response Time</h4>
+          <p>48 – 72 hours with a full quote</p>
+        </div>
+      </div>
+
+      <div class="info-socials">
+        <a href="https://www.facebook.com/profile.php?id=61569572331781" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12H16l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/lc.travels.s/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2 0 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 5 .3 4.2.6c-.8.3-1.5.7-2.2 1.4C1.3 2.7.9 3.4.6 4.2.3 5 .1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.1.6 2.9.3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.6.5 2.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.6.6-2.9 0-1.2.1-1.6.1-4.8s0-3.7-.1-4.9c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.5-1.4-2.2C21.3 1.3 20.6.9 19.8.6 19 .3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zM18.4 4.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg>
+        </a>
+        <a href="https://wa.me/8294031" target="_blank" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0c-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>Vacation <em>Quote Request</em></h2>
+      <p class="lede">Share the details below and we'll put together the perfect trip for you.</p>
+      <p class="required-note">* Indicates a required field</p>
+
+      <form id="quoteForm" onsubmit="return sendQuote(event)">
+
+        <!-- 1. YOUR INFO -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">1</span>
+            <h3>Your Contact Info</h3>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name<span class="req">*</span></label>
+              <input type="text" id="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email<span class="req">*</span></label>
+              <input type="email" id="email" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number<span class="req">*</span></label>
+            <input type="tel" id="phone" required />
+          </div>
+        </div>
+
+        <!-- 2. QUOTE FOR -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">2</span>
+            <h3>What Would You Like Us to Quote?</h3>
+          </div>
+          <label>Check all that apply<span class="req">*</span></label>
+          <div class="check-grid" id="quoteChecks">
+            <label class="check-item"><input type="checkbox" name="quote" value="Flight" /> Flight</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="Hotel" /> Hotel</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="Cruise" /> Cruise</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="All-Inclusive" /> All-Inclusive</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="Vacation Home or Villa" /> Vacation Home / Villa</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="Show" /> Show</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="Sporting Event" /> Sporting Event</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="Concert" /> Concert</label>
+            <label class="check-item"><input type="checkbox" name="quote" value="Tours" /> Tours</label>
+          </div>
+          <div class="form-group" style="margin-top:14px">
+            <label for="quoteOther">Other (please specify)</label>
+            <input type="text" id="quoteOther" />
+          </div>
+        </div>
+
+        <!-- 3. TRAVELERS -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">3</span>
+            <h3>Your Travel Party</h3>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label for="travelers">Total Travelers<span class="req">*</span></label>
+              <input type="number" id="travelers" min="1" required />
+            </div>
+            <div class="form-group">
+              <label for="adults">Adults<span class="req">*</span></label>
+              <input type="number" id="adults" min="0" required />
+            </div>
+            <div class="form-group">
+              <label for="children">Children<span class="req">*</span></label>
+              <input type="number" id="children" min="0" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ages">Ages of Children at time of travel</label>
+            <input type="text" id="ages" placeholder="e.g. 6, 9, 14" />
+          </div>
+        </div>
+
+        <!-- 4. ACCOMMODATIONS -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">4</span>
+            <h3>Accommodations</h3>
+          </div>
+          <div class="form-group">
+            <label for="rooms">Number of Hotel Rooms or Bedrooms Needed<span class="req">*</span></label>
+            <input type="number" id="rooms" min="1" required />
+          </div>
+          <div class="form-group">
+            <label for="roomType">Type of Accommodations<span class="req">*</span></label>
+            <input type="text" id="roomType" required placeholder="Standard Room, Oceanview, Oceanfront, Suite..." />
+          </div>
+          <div class="form-group">
+            <label for="reason">Reason for Travel<span class="req">*</span></label>
+            <input type="text" id="reason" required placeholder="Honeymoon, Anniversary, Birthday, Girls Trip, Family Trip..." />
+          </div>
+        </div>
+
+        <!-- 5. DESTINATION & DATES -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">5</span>
+            <h3>Destination &amp; Dates</h3>
+          </div>
+          <div class="form-group">
+            <label for="destination">Destination(s)<span class="req">*</span></label>
+            <input type="text" id="destination" required placeholder="e.g. Jamaica, Bahamas, Cancun" />
+          </div>
+          <div class="form-group">
+            <label for="departure">Departure Info (city, state, airport)<span class="req">*</span></label>
+            <input type="text" id="departure" required placeholder="or N/A if no flight is needed" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="depDate">Departure Date<span class="req">*</span></label>
+              <input type="date" id="depDate" required />
+            </div>
+            <div class="form-group">
+              <label for="retDate">Return Date<span class="req">*</span></label>
+              <input type="date" id="retDate" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Flexible on dates? (if it gets you a better deal)<span class="req">*</span></label>
+            <div class="radio-pills" data-name="flex">
+              <label class="pill"><input type="radio" name="flex" value="Yes" required /> Yes</label>
+              <label class="pill"><input type="radio" name="flex" value="No" /> No</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="flexRange">Date range / number of nights (if flexible)</label>
+            <input type="text" id="flexRange" placeholder="e.g. any week in June, 7 nights" />
+          </div>
+        </div>
+
+        <!-- 6. BUDGET & EXTRAS -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">6</span>
+            <h3>Budget &amp; Extras</h3>
+          </div>
+          <div class="form-group">
+            <label for="budget">Desired Budget PER PERSON (USD)<span class="req">*</span></label>
+            <input type="text" id="budget" required placeholder="e.g. $2,500" />
+          </div>
+          <div class="form-group">
+            <label>Include a Car Rental?<span class="req">*</span></label>
+            <div class="radio-pills" data-name="car">
+              <label class="pill"><input type="radio" name="car" value="Yes" required /> Yes</label>
+              <label class="pill"><input type="radio" name="car" value="No" /> No</label>
+              <label class="pill"><input type="radio" name="car" value="Maybe" /> Maybe</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Include Travel Insurance?<span class="req">*</span></label>
+            <div class="radio-pills" data-name="insurance">
+              <label class="pill"><input type="radio" name="insurance" value="Yes" required /> Yes</label>
+              <label class="pill"><input type="radio" name="insurance" value="No" /> No</label>
+              <label class="pill"><input type="radio" name="insurance" value="Maybe" /> Maybe</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Include Hotel Transfers from Airport?<span class="req">*</span></label>
+            <div class="radio-pills" data-name="transfers">
+              <label class="pill"><input type="radio" name="transfers" value="Yes" required /> Yes</label>
+              <label class="pill"><input type="radio" name="transfers" value="No" /> No</label>
+              <label class="pill"><input type="radio" name="transfers" value="Maybe" /> Maybe</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. AGREEMENT -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">7</span>
+            <h3>Professional Services Fee</h3>
+          </div>
+          <div class="agreement">
+            <p>LC Travels charges a non-refundable professional services fee (based on booking fee) to all clients. This fee includes our usual services of finding and recommending the best properties for you, along with helping navigate the ever-changing rules of travel, including the latest updates from tour operators, airlines, resorts, and entry requirements per destination.</p>
+            <p>Once you submit this form and agree to the terms, an email will be sent with the service fee amount and you'll be asked whether you want to continue. While anyone can book for themselves online, our professional services fee ensures you won't be alone with your vacation — if any issues arise, we handle them every step of the way.</p>
+            <p>Any questions or concerns, reach me at leshardclarke.travels@gmail.com, or LC Travels on Facebook &amp; Instagram.</p>
+            <label class="agreement-check">
+              <input type="checkbox" id="agree" required />
+              <span>I Agree To The Non-Refundable Professional Services Fee<span class="req">*</span></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 8. EXTRAS -->
+        <div class="form-section">
+          <div class="section-title">
+            <span class="section-num">8</span>
+            <h3>Anything Else?</h3>
+          </div>
+          <div class="form-group">
+            <label for="extras">Special requests &amp; preferences</label>
+            <textarea id="extras" placeholder="Desired resorts, airline or cruise preferences, activities, must-haves — the more detail, the better."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="referral">Who may we thank for the referral?</label>
+            <input type="text" id="referral" placeholder="If someone sent you our way" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Send My Quote Request</button>
+        <div class="success-msg" id="successMsg">
+          Opening your email client — we'll get back to you within 48–72 hours!
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="logo">LC TRAVELS<span>JOURNEYS BEYOND</span></a>
+  <p>Your independent travel agent for luxury, family, adventure, and Caribbean getaways.</p>
+  <div class="footer-socials">
+    <a href="https://www.facebook.com/profile.php?id=61569572331781" target="_blank" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12H16l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/lc.travels.s/" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2 0 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 5 .3 4.2.6c-.8.3-1.5.7-2.2 1.4C1.3 2.7.9 3.4.6 4.2.3 5 .1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.1.6 2.9.3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.6.5 2.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.6.6-2.9 0-1.2.1-1.6.1-4.8s0-3.7-.1-4.9c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.5-1.4-2.2C21.3 1.3 20.6.9 19.8.6 19 .3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zM18.4 4.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg>
+    </a>
+    <a href="https://wa.me/8294031" target="_blank" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0c-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-1-2.3-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+    </a>
+  </div>
+  <div class="copyright">© 2026 LC TRAVELS — Crafted with care for wanderers everywhere.</div>
+</footer>
+
+<script>
+// visual toggle for checks + pills
+document.querySelectorAll('.check-item input[type=checkbox]').forEach(cb=>{
+  cb.addEventListener('change',()=>cb.closest('.check-item').classList.toggle('selected',cb.checked));
+});
+document.querySelectorAll('.radio-pills').forEach(group=>{
+  group.querySelectorAll('input[type=radio]').forEach(r=>{
+    r.addEventListener('change',()=>{
+      group.querySelectorAll('.pill').forEach(p=>p.classList.remove('selected'));
+      if(r.checked) r.closest('.pill').classList.add('selected');
+    });
+  });
+});
+document.getElementById('agree').addEventListener('change',e=>{
+  e.target.closest('.agreement-check').classList.toggle('selected',e.target.checked);
+});
+
+function v(id){return document.getElementById(id).value.trim()}
+function radio(name){const el=document.querySelector(`input[name=${name}]:checked`);return el?el.value:''}
+
+function sendQuote(e){
+  e.preventDefault();
+  const quoteBoxes=[...document.querySelectorAll('input[name=quote]:checked')].map(c=>c.value);
+  const other=v('quoteOther'); if(other) quoteBoxes.push('Other: '+other);
+  if(quoteBoxes.length===0){alert('Please check at least one item under "What would you like us to Quote?"');return false}
+
+  const NL='%0D%0A';
+  const line=(k,val)=> `${k}: ${encodeURIComponent(val||'—')}` + NL;
+
+  const body =
+    `New Vacation Quote Request from ${encodeURIComponent(v('name'))}${NL}${NL}` +
+    `— YOUR INFO —${NL}` +
+    line('Full Name',v('name')) +
+    line('Email',v('email')) +
+    line('Phone',v('phone')) + NL +
+    `— QUOTE FOR —${NL}` +
+    line('Requested',quoteBoxes.join(', ')) + NL +
+    `— TRAVEL PARTY —${NL}` +
+    line('Total Travelers',v('travelers')) +
+    line('Adults',v('adults')) +
+    line('Children',v('children')) +
+    line('Ages of Children',v('ages')) + NL +
+    `— ACCOMMODATIONS —${NL}` +
+    line('Rooms/Bedrooms',v('rooms')) +
+    line('Type',v('roomType')) +
+    line('Reason for Travel',v('reason')) + NL +
+    `— DESTINATION & DATES —${NL}` +
+    line('Destination(s)',v('destination')) +
+    line('Departure Info',v('departure')) +
+    line('Departure Date',v('depDate')) +
+    line('Return Date',v('retDate')) +
+    line('Flexible?',radio('flex')) +
+    line('Flex Range',v('flexRange')) + NL +
+    `— BUDGET & EXTRAS —${NL}` +
+    line('Budget per person (USD)',v('budget')) +
+    line('Car Rental',radio('car')) +
+    line('Travel Insurance',radio('insurance')) +
+    line('Airport Transfers',radio('transfers')) + NL +
+    `— AGREEMENT —${NL}` +
+    line('Agreed to Prof. Services Fee',document.getElementById('agree').checked?'Yes':'No') + NL +
+    `— NOTES —${NL}` +
+    line('Special Requests',v('extras')) +
+    line('Referral',v('referral'));
+
+  const subject = `New Quote Request — ${v('name')}`;
+  window.location.href = `mailto:leshardclarke.travels@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  document.getElementById('successMsg').classList.add('show');
+  return false;
+}
+</script>
+
+</body>
+</html>
