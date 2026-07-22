@@ -4,8 +4,8 @@ Independent travel agent website — luxury honeymoons, Caribbean escapes, famil
 
 ## Pages
 
-- `index.html` — Homepage (hero, specialties, about, CTA, footer)
-- `contact.html` — Full vacation quote request form
+- `index.html` — Homepage at `/` (hero, specialties, about, CTA, footer)
+- `contact/index.html` — Quote request form at `/contact/`
 - `404.html` — Not-found page
 
 ## Assets
